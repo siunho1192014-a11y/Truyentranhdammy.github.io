@@ -3,38 +3,1007 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Truyện tranh đam mỹ</title>
+
+<title>Truyện Đam Mỹ</title>
 
 <style>
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  background: #111;
-  color: white;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0d0d0f;
+    color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ================= HEADER ================= */
 
 header {
-  padding: 18px;
-  text-align: center;
-  background: #181818;
-  font-size: 22px;
-  font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    height: 60px;
+
+    background: rgba(18,18,21,0.95);
+    border-bottom: 1px solid #29292e;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    backdrop-filter: blur(10px);
 }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 15px;
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff4f81;
+}
+
+.menu-btn {
+    border: none;
+    background: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* ================= HOME ================= */
+
+.home {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 15px;
+}
+
+/* Banner */
+
+.banner {
+    min-height: 230px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #28141f,
+            #15151b
+        );
+
+    display: flex;
+    align-items: center;
+
+    padding: 35px;
+
+    margin-bottom: 30px;
+
+    border: 1px solid #30242a;
+}
+
+.banner-content {
+    max-width: 650px;
+}
+
+.banner h1 {
+    font-size: 38px;
+    margin: 0 0 12px;
+}
+
+.banner p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+/* Search */
+
+.search-box {
+    margin: 25px 0;
+}
+
+.search-box input {
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid #333;
+
+    background: #18181c;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+.search-box input:focus {
+    border-color: #ff4f81;
+}
+
+/* ================= SECTION ================= */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 25px 0 15px;
+}
+
+.section-title h2 {
+    margin: 0;
+}
+
+/* ================= COMIC GRID ================= */
+
+.comic-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(150px, 1fr));
+
+    gap: 15px;
+}
+
+.comic-card {
+    background: #17171b;
+
+    border: 1px solid #28282d;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.comic-card:hover {
+    transform: translateY(-4px);
+    border-color: #ff4f81;
+}
+
+.cover {
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    background: #222;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.cover-placeholder {
+    font-size: 50px;
+    color: #555;
+}
+
+.comic-info {
+    padding: 12px;
+}
+
+.comic-title {
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.comic-status {
+    margin-top: 6px;
+
+    color: #999;
+
+    font-size: 13px;
+}
+
+/* ================= PAGES ================= */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* ================= COMIC PAGE ================= */
+
+.comic-page {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 20px 15px;
+}
+
+.back-btn {
+    border: none;
+
+    background: #222;
+
+    color: white;
+
+    padding: 11px 16px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    margin-bottom: 20px;
+}
+
+.back-btn:hover {
+    background: #333;
+}
+
+.comic-header {
+    margin-bottom: 25px;
+}
+
+.comic-header h1 {
+    margin-bottom: 8px;
+}
+
+.comic-header p {
+    color: #999;
+}
+
+/* ================= CHAPTER LIST ================= */
+
+.chapter-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
 }
 
 .chapter {
-  background: #222;
-  padding: 15px;
-  margin: 10px 0;
+    background: #18181c;
+
+    border: 1px solid #29292e;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.chapter:hover {
+    border-color: #ff4f81;
+
+    background: #202025;
+}
+
+.chapter-number {
+    font-weight: bold;
+}
+
+.chapter-arrow {
+    color: #888;
+}
+
+/* ================= READER ================= */
+
+.reader {
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 15px 0 50px;
+}
+
+.reader-top {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 10px 15px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.reader-title {
+    font-weight: bold;
+
+    text-align: center;
+
+    flex: 1;
+}
+
+.nav-btn {
+    background: #222;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    background: #333;
+}
+
+.reader-images {
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.reader-images img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    margin: 0 auto;
+
+    background: #111;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav {
+    max-width: 850px;
+
+    margin: 25px auto;
+
+    padding: 0 15px;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.bottom-nav button {
+    flex: 1;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #222;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.bottom-nav button:hover {
+    background: #333;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    header {
+        height: 55px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .home {
+        padding: 15px 10px;
+    }
+
+    .banner {
+        min-height: 190px;
+
+        padding: 25px 20px;
+
+        border-radius: 14px;
+    }
+
+    .banner h1 {
+        font-size: 28px;
+    }
+
+    .comic-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .comic-info {
+        padding: 10px;
+    }
+
+    .comic-title {
+        font-size: 14px;
+    }
+
+    .reader-top {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .nav-btn {
+        padding: 9px 10px;
+        font-size: 13px;
+    }
+}
+
+/* ================= EMPTY ================= */
+
+.empty {
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        📖 <span>Truyện</span> Đam Mỹ
+    </div>
+
+    <button class="menu-btn" onclick="showHome()">
+        🏠
+    </button>
+
+</header>
+
+
+<!-- ===================================================== -->
+<!-- HOME -->
+<!-- ===================================================== -->
+
+<div id="homePage" class="page active">
+
+    <main class="home">
+
+        <section class="banner">
+
+            <div class="banner-content">
+
+                <h1>Truyện Đam Mỹ</h1>
+
+                <p>
+                    Kho truyện tranh đọc online.
+                    Giao diện tối, tối ưu cho điện thoại.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔎 Tìm tên truyện..."
+                oninput="searchComic()"
+            >
+
+        </div>
+
+
+        <!-- COMICS -->
+
+        <div class="section-title">
+
+            <h2>📚 Truyện mới</h2>
+
+        </div>
+
+
+        <div id="comicGrid" class="comic-grid">
+
+            <!-- Comic 1 -->
+
+            <div
+                class="comic-card"
+                data-title="Đồng Tước Tỏa Kim Thoa"
+                onclick="openComic()"
+            >
+
+                <div class="cover">
+
+                    <!--
+                    Sau này thay bằng:
+
+                    covers/dongtuoc.jpg
+                    -->
+
+                    <div class="cover-placeholder">
+                        📕
+                    </div>
+
+                </div>
+
+                <div class="comic-info">
+
+                    <div class="comic-title">
+                        Đồng Tước Tỏa Kim Thoa
+                    </div>
+
+                    <div class="comic-status">
+                        Đang cập nhật
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Có thể thêm truyện khác ở đây -->
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- COMIC PAGE -->
+<!-- ===================================================== -->
+
+<div id="comicPage" class="page">
+
+    <main class="comic-page">
+
+        <button
+            class="back-btn"
+            onclick="showHome()"
+        >
+            ← Về trang chủ
+        </button>
+
+
+        <div class="comic-header">
+
+            <h1>
+                Đồng Tước Tỏa Kim Thoa
+            </h1>
+
+            <p>
+                Danh sách chương
+            </p>
+
+        </div>
+
+
+        <div class="chapter-list">
+
+            <div
+                class="chapter"
+                onclick="openChapter(1)"
+            >
+
+                <span class="chapter-number">
+                    Chương 1
+                </span>
+
+                <span class="chapter-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <div
+                class="chapter"
+                onclick="openChapter(2)"
+            >
+
+                <span class="chapter-number">
+                    Chương 2
+                </span>
+
+                <span class="chapter-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <div
+                class="chapter"
+                onclick="openChapter(3)"
+            >
+
+                <span class="chapter-number">
+                    Chương 3
+                </span>
+
+                <span class="chapter-arrow">
+                    →
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- READER -->
+<!-- ===================================================== -->
+
+<div id="readerPage" class="page">
+
+    <div class="reader">
+
+        <div class="reader-top">
+
+            <button
+                class="nav-btn"
+                onclick="previousChapter()"
+            >
+                ←
+            </button>
+
+
+            <div
+                id="readerTitle"
+                class="reader-title"
+            >
+                Chương 1
+            </div>
+
+
+            <button
+                class="nav-btn"
+                onclick="nextChapter()"
+            >
+                →
+            </button>
+
+        </div>
+
+
+        <!-- IMAGES -->
+
+        <div
+            id="readerImages"
+            class="reader-images"
+        ></div>
+
+
+        <!-- BOTTOM BUTTONS -->
+
+        <div class="bottom-nav">
+
+            <button onclick="previousChapter()">
+                ← Chương trước
+            </button>
+
+            <button onclick="showComic()">
+                📚 Chương
+            </button>
+
+            <button onclick="nextChapter()">
+                Chương sau →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   BIẾN
+===================================================== */
+
+let currentChapter = 1;
+
+
+/* =====================================================
+   CHUYỂN TRANG
+===================================================== */
+
+function hidePages() {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+
+            page.classList.remove("active");
+
+        });
+
+}
+
+
+function showHome() {
+
+    hidePages();
+
+    document
+        .getElementById("homePage")
+        .classList.add("active");
+
+    window.scrollTo(0, 0);
+}
+
+
+function showComic() {
+
+    hidePages();
+
+    document
+        .getElementById("comicPage")
+        .classList.add("active");
+
+    window.scrollTo(0, 0);
+}
+
+
+/* =====================================================
+   MỞ TRUYỆN
+===================================================== */
+
+function openComic() {
+
+    showComic();
+
+}
+
+
+/* =====================================================
+   MỞ CHƯƠNG
+===================================================== */
+
+function openChapter(chapter) {
+
+    currentChapter = chapter;
+
+    hidePages();
+
+    document
+        .getElementById("readerPage")
+        .classList.add("active");
+
+
+    document
+        .getElementById("readerTitle")
+        .innerText =
+        "Chương " + chapter;
+
+
+    let container =
+        document.getElementById("readerImages");
+
+
+    container.innerHTML = "";
+
+
+    /*
+       CẤU TRÚC ẢNH:
+
+       chapters/
+          1/
+             001.jpg
+             002.jpg
+             003.jpg
+
+          2/
+             001.jpg
+             002.jpg
+
+          3/
+             001.jpg
+             002.jpg
+    */
+
+
+    /*
+       Số lượng ảnh của mỗi chương.
+
+       Tạm thời để 20.
+
+       Nếu chương có 50 ảnh
+       đổi thành 50.
+    */
+
+    const imageCount = 20;
+
+
+    for (
+        let i = 1;
+        i <= imageCount;
+        i++
+    ) {
+
+        let img =
+            document.createElement("img");
+
+
+        let number =
+            String(i).padStart(3, "0");
+
+
+        img.src =
+            "chapters/" +
+            chapter +
+            "/" +
+            number +
+            ".jpg";
+
+
+        /*
+           Nếu ảnh không tồn tại
+           thì ẩn nó.
+        */
+
+        img.onerror = function() {
+
+            this.style.display = "none";
+
+        };
+
+
+        container.appendChild(img);
+
+    }
+
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* =====================================================
+   CHƯƠNG TRƯỚC
+===================================================== */
+
+function previousChapter() {
+
+    if (currentChapter > 1) {
+
+        openChapter(
+            currentChapter - 1
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CHƯƠNG SAU
+===================================================== */
+
+function nextChapter() {
+
+    openChapter(
+        currentChapter + 1
+    );
+
+}
+
+
+/* =====================================================
+   TÌM TRUYỆN
+===================================================== */
+
+function searchComic() {
+
+    let input =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    let comics =
+        document
+        .querySelectorAll(".comic-card");
+
+
+    comics.forEach(
+        comic => {
+
+            let title =
+                comic
+                .dataset
+                .title
+                .toLowerCase();
+
+
+            if (
+                title.includes(input)
+            ) {
+
+                comic.style.display =
+                    "block";
+
+            } else {
+
+                comic.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+</script>
+
+</body>
+</html>  margin: 10px 0;
   border-radius: 10px;
   cursor: pointer;
 }
