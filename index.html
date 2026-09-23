@@ -4,37 +4,713 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Truyện Đam Mỹ</title>
+<title>BL Library</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+body{
+    background:#0b0b0f;
+    color:#f5f5f5;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-body {
-    margin: 0;
-    background: #0d0d0f;
-    color: #f5f5f5;
-    font-family: Arial, Helvetica, sans-serif;
+/* ===== HEADER ===== */
+
+header{
+    height:64px;
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(11,11,15,.88);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid #222;
 }
 
-/* ================= HEADER ================= */
+.logo{
+    font-size:21px;
+    font-weight:bold;
+    letter-spacing:.5px;
+}
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.logo span{
+    color:#ff4f8b;
+}
 
-    height: 60px;
+nav{
+    display:flex;
+    gap:22px;
+}
 
-    background: rgba(18,18,21,0.95);
-    border-bottom: 1px solid #29292e;
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+}
 
-    display: flex;
+nav a:hover{
+    color:#fff;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+    max-width:1200px;
+    margin:25px auto;
+    padding:0 18px;
+}
+
+.hero-box{
+    min-height:300px;
+
+    border-radius:22px;
+
+    padding:40px;
+
+    display:flex;
+    align-items:center;
+
+    background:
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(255,79,139,.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #19151b,
+            #0f1015
+        );
+
+    border:1px solid #2b252b;
+
+    overflow:hidden;
+}
+
+.hero-content{
+    max-width:650px;
+}
+
+.hero-small{
+    color:#ff4f8b;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.hero h1{
+    font-size:46px;
+    line-height:1.1;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#999;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.hero-btn{
+    display:inline-block;
+    margin-top:22px;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    background:#ff4f8b;
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+/* ===== MAIN ===== */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 18px 60px;
+}
+
+.section{
+    margin-top:35px;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+.section-head h2{
+    font-size:22px;
+}
+
+.section-head span{
+    color:#777;
+    font-size:13px;
+}
+
+/* ===== SEARCH ===== */
+
+.search{
+    margin-top:25px;
+}
+
+.search input{
+    width:100%;
+
+    padding:16px 18px;
+
+    background:#15151a;
+
+    border:1px solid #29292f;
+
+    border-radius:12px;
+
+    outline:none;
+
+    color:white;
+
+    font-size:15px;
+}
+
+.search input:focus{
+    border-color:#ff4f8b;
+}
+
+/* ===== FILTER ===== */
+
+.filters{
+    display:flex;
+    gap:9px;
+
+    overflow-x:auto;
+
+    padding-bottom:5px;
+}
+
+.filter{
+    flex-shrink:0;
+
+    padding:9px 15px;
+
+    border-radius:20px;
+
+    background:#17171c;
+
+    border:1px solid #29292f;
+
+    color:#aaa;
+
+    font-size:13px;
+
+    cursor:pointer;
+}
+
+.filter:hover,
+.filter.active{
+    background:#ff4f8b;
+    color:white;
+    border-color:#ff4f8b;
+}
+
+/* ===== GRID ===== */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fill,minmax(170px,1fr));
+
+    gap:18px;
+}
+
+/* ===== CARD ===== */
+
+.card{
+    background:#141419;
+
+    border:1px solid #25252b;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#ff4f8b;
+}
+
+.cover{
+    aspect-ratio:3/4;
+
+    background:
+        linear-gradient(
+            145deg,
+            #24242b,
+            #111116
+        );
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+.cover img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.no-cover{
+    font-size:42px;
+    opacity:.25;
+}
+
+.info{
+    padding:13px;
+}
+
+.title{
+    font-weight:bold;
+    font-size:15px;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.meta{
+    margin-top:7px;
+
+    display:flex;
+    justify-content:space-between;
+
+    color:#777;
+
+    font-size:12px;
+}
+
+/* ===== EMPTY ===== */
+
+.empty{
+    padding:50px 20px;
+
+    text-align:center;
+
+    color:#666;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    border-top:1px solid #222;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    color:#666;
+
+    font-size:13px;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:600px){
+
+    header{
+        padding:0 15px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        margin-top:15px;
+    }
+
+    .hero-box{
+        min-height:260px;
+
+        padding:28px 22px;
+
+        border-radius:17px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .grid{
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:11px;
+    }
+
+    .info{
+        padding:10px;
+    }
+
+    .title{
+        font-size:13px;
+    }
+
+    .meta{
+        font-size:11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        BL<span>Library</span>
+    </div>
+
+    <nav>
+        <a href="#">Trang chủ</a>
+        <a href="#truyen">Truyện</a>
+        <a href="#theloai">Thể loại</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-box">
+
+        <div class="hero-content">
+
+            <div class="hero-small">
+                WELCOME TO BL LIBRARY
+            </div>
+
+            <h1>
+                Đọc truyện<br>
+                theo cách của bạn.
+            </h1>
+
+            <p>
+                Kho truyện tranh BL được sắp xếp
+                đơn giản, giao diện tối và tối ưu
+                cho việc đọc trên điện thoại.
+            </p>
+
+            <a
+                class="hero-btn"
+                href="#truyen"
+            >
+                Khám phá truyện →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+
+    <!-- SEARCH -->
+
+    <div class="search">
+
+        <input
+            id="search"
+            type="text"
+            placeholder="🔎  Tìm kiếm truyện..."
+            oninput="searchComic()"
+        >
+
+    </div>
+
+
+    <!-- FILTER -->
+
+    <section
+        id="theloai"
+        class="section"
+    >
+
+        <div class="section-head">
+
+            <h2>Thể loại</h2>
+
+        </div>
+
+        <div class="filters">
+
+            <div class="filter active">
+                Tất cả
+            </div>
+
+            <div class="filter">
+                Hiện đại
+            </div>
+
+            <div class="filter">
+                Cổ trang
+            </div>
+
+            <div class="filter">
+                Học đường
+            </div>
+
+            <div class="filter">
+                Hành động
+            </div>
+
+            <div class="filter">
+                Tâm lý
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMICS -->
+
+    <section
+        id="truyen"
+        class="section"
+    >
+
+        <div class="section-head">
+
+            <h2>📚 Truyện mới</h2>
+
+            <span id="comicCount">
+                0 truyện
+            </span>
+
+        </div>
+
+
+        <div
+            id="comicGrid"
+            class="grid"
+        >
+
+            <!--
+            =================================================
+            THÊM TRUYỆN Ở ĐÂY
+            =================================================
+
+            Ví dụ:
+
+            <div
+                class="card"
+                data-title="Tên truyện"
+                onclick="openComic()"
+            >
+
+                <div class="cover">
+
+                    <img src="covers/ten-truyen.jpg">
+
+                </div>
+
+                <div class="info">
+
+                    <div class="title">
+                        Tên truyện
+                    </div>
+
+                    <div class="meta">
+
+                        <span>BL</span>
+
+                        <span>Chap 01</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            =================================================
+            -->
+
+        </div>
+
+
+        <div
+            id="empty"
+            class="empty"
+        >
+
+            Chưa có truyện nào.
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 BL Library
+
+</footer>
+
+
+<script>
+
+/* =========================
+   ĐẾM TRUYỆN
+========================= */
+
+function updateCount(){
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    document.getElementById(
+        "comicCount"
+    ).innerText =
+        cards.length + " truyện";
+
+    document.getElementById(
+        "empty"
+    ).style.display =
+        cards.length === 0
+        ? "block"
+        : "none";
+}
+
+
+/* =========================
+   TÌM KIẾM
+========================= */
+
+function searchComic(){
+
+    const keyword =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        const title =
+            card.dataset.title
+            .toLowerCase();
+
+        if(title.includes(keyword)){
+
+            card.style.display =
+                "block";
+
+            visible++;
+
+        }else{
+
+            card.style.display =
+                "none";
+
+        }
+
+    });
+
+    document.getElementById(
+        "empty"
+    ).style.display =
+        visible === 0
+        ? "block"
+        : "none";
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+document
+.querySelectorAll(".filter")
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            document
+            .querySelectorAll(".filter")
+            .forEach(x =>
+                x.classList.remove("active")
+            );
+
+            this.classList.add("active");
+
+        }
+    );
+
+});
+
+
+/* ========================= */
+
+updateCount();
+
+</script>
+
+</body>
+</html>    display: flex;
     align-items: center;
     justify-content: space-between;
 
