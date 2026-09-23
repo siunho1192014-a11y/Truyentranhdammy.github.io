@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Truyện tranh đam mỹ</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 18px;
+  text-align: center;
+  background: #181818;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 15px;
+}
+
+.chapter {
+  background: #222;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.chapter:hover {
+  background: #333;
+}
+
+.reader {
+  display: none;
+  text-align: center;
+}
+
+.reader img {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+button {
+  background: #333;
+  color: white;
+  border: 0;
+  padding: 12px 20px;
+  margin: 10px 5px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<header>📖 Truyện tranh đam mỹ</header>
+
+<div class="container">
+
+  <div id="menu">
+    <h2>Danh sách chương</h2>
+
+    <div class="chapter" onclick="openChapter(1)">
+      📕 Chương 1
+    </div>
+
+    <div class="chapter" onclick="openChapter(2)">
+      📕 Chương 2
+    </div>
+  </div>
+
+  <div id="reader" class="reader">
+
+    <button onclick="backMenu()">← Danh sách chương</button>
+
+    <h2 id="chapterTitle"></h2>
+
+    <div id="images"></div>
+
+    <button onclick="previousChapter()">← Chương trước</button>
+    <button onclick="nextChapter()">Chương sau →</button>
+
+  </div>
+
+</div>
+
+<script>
+
+let currentChapter = 1;
+
+function openChapter(chapter) {
+  currentChapter = chapter;
+
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("reader").style.display = "block";
+
+  document.getElementById("chapterTitle").innerText =
+    "Chương " + chapter;
+
+  let images = document.getElementById("images");
+
+  images.innerHTML = "";
+
+  /*
+    Sau này đặt ảnh vào:
+    
+    chapters/1/001.jpg
+    chapters/1/002.jpg
+    chapters/1/003.jpg
+
+    chapters/2/001.jpg
+    chapters/2/002.jpg
+  */
+
+  for (let i = 1; i <= 3; i++) {
+
+    let img = document.createElement("img");
+
+    let number = String(i).padStart(3, "0");
+
+    img.src =
+      "chapters/" +
+      chapter +
+      "/" +
+      number +
+      ".jpg";
+
+    images.appendChild(img);
+  }
+}
+
+function backMenu() {
+  document.getElementById("reader").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+}
+
+function previousChapter() {
+  if (currentChapter > 1) {
+    openChapter(currentChapter - 1);
+    window.scrollTo(0, 0);
+  }
+}
+
+function nextChapter() {
+  openChapter(currentChapter + 1);
+  window.scrollTo(0, 0);
+}
+
+</script>
+
+</body>
+  </html>
